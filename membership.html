@@ -1,0 +1,187 @@
+<script src="https://www.moneybutton.com/moneybutton.js"></script>
+	
+<!-- Content displayed for members with NFT https://www.tennesseeohioparanormalsociety.com/nft-membership-for-multiple-tokens/-->
+<div id="members_content" style="display:none" data-hidden-for-button-id="fiat">
+
+		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/07PDkL_4VH4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<br>You Have TOPS NFT!!!<a href="https://bitcointoken.exchange/asset/6521/" target="_blank" rel="noopener"><img src="https://www.ashcancomicspub.com/uploads/2/4/2/5/24254619/tops-bsvtoken_orig.png" alt="First NFT" title="TOPS NFT series 1"></a>
+</div>
+<div id="tarot_asset" style="display:none">
+You have the Empress asset
+<img src="https://www.tennesseeohioparanormalsociety.com/wp-content/uploads/2021/11/RWS_Tarot_03_Empress.jpeg">
+</div>
+
+<!-- End of Content displayed for members with NFT -->
+<!-- End of 2nd token -->	
+
+<!-- ID=member_content -->
+
+<!-- nonmember payment to view content -->
+<div class="money-button"
+	 data-client-identifier="66de26eba2b7f927e4005ac94b4f797e"
+  data-to="49581@moneybutton.com"
+	 data-div-to-show="members_content"
+	 data-button-data="Thank you for paying with MeasureClothing token!"
+	data-button-id="fiat"
+  data-amount=".001"
+  data-currency="USD"
+  data-on-payment="displayHiddenContent"
+></div>
+<!-- Measure Clothing token -->		
+<div class="money-button"
+	 data-label="MeasureClothing"
+	 data-client-identifier="66de26eba2b7f927e4005ac94b4f797e"
+	 data-outputs='[{"to":"49581@moneybutton.com","asset":"257341f17840.asset@moneybutton.com","amount":1}]'
+	 data-button-data="Thank you for paying with MeasureClothing token!"
+	 data-div-to-show="members_content"
+	 data-button-id="MeasureClothingToken",
+	 data-on-payment="displayHiddenContent"></div>
+
+<div class="money-button"
+	 data-label="tarot_asset"
+	 data-client-identifier="66de26eba2b7f927e4005ac94b4f797e"
+	 data-outputs='[{"to":"57459@moneybutton.com","asset":"c16da2682847.asset@moneybutton.com","amount":1}]'
+	 data-button-data="Thank you for paying with MeasureClothing token!"
+	 data-div-to-show="tarot_asset"
+	 data-button-id="tarot_asset",
+	 data-on-payment="displayHiddenContent"></div>
+
+<!-- End of nonmember payment to view content -->
+
+<div id="tarot_asset" style="display:none">
+You have the Empress asset
+<img src="https://www.tennesseeohioparanormalsociety.com/wp-content/uploads/2021/11/RWS_Tarot_03_Empress.jpeg">
+</div>
+<!-- Nonmember Area -->
+<br>Test text for people with out nft
+	
+<!-- End of Nonmember Area -->
+<script>
+	
+	var access_token_data = null;
+	var user_data = null;
+	var oauth_scope = "auth.user_identity:read users.asset:read users.balance:read"
+	
+	function display_hidden_content_by_button_id(button_id){
+		console.log("In by_button_id and button_id is " + button_id);
+		swoop_div = document.querySelectorAll('[data-button-id=' + button_id + ']')[0];
+		console.log(swoop_div.getAttribute("data-div-to-show"));
+		hidden_div = document.getElementById(swoop_div.getAttribute("data-div-to-show"));
+		swoop_div.innerHTML = '';
+		hidden_div.style = "";
+		
+	}
+	
+	function displayHiddenContent(payment) { 
+		display_hidden_content_by_button_id(payment['buttonId']);
+	}
+	
+	function display_paid_hidden_content(paid_buttons){
+		// FIXME (don't use index, but value)
+		for(button_index in paid_buttons){
+			console.log("Button name: " + paid_buttons[button_index]);
+			display_hidden_content_by_button_id(paid_buttons[button_index]);
+		}
+		
+	}
+	
+	// calls get_paid service
+	function call_get_paid(user_data) {
+		console.log(user_data['data']['id']);
+		//https://4ya9phkyoa.execute-api.us-east-2.amazonaws.com/default/paidquery?mb_user_id=49581
+		jQuery.ajax({
+			url: "https://4ya9phkyoa.execute-api.us-east-2.amazonaws.com/default/paidquery?mb_user_id=" + user_data['data']['id'],
+			type: 'get',
+			success: function( data ) { display_paid_hidden_content(data); }
+		});
+	}
+	
+	// Calls MB user identity endpoint; assumes access_token_data filled.
+	function call_user_identity(){
+		jQuery.ajax({
+			url: "https://www.moneybutton.com/api/v1/auth/user_identity",
+			type: 'get',
+			headers: {'Authorization': 'Bearer ' + access_token_data['access_token']},
+			success: function( data ) { user_data = data; call_get_paid(user_data); }
+		});
+	}
+	
+	var query_strings = (function(a) {
+    	if (a == "") return {};
+    	var b = {};
+    	for (var i = 0; i < a.length; ++i)
+    	{
+        	var p=a[i].split('=', 2);
+        	if (p.length == 1)
+            	b[p[0]] = "";
+        	else
+            	b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    	}
+    	return b;})(window.location.search.substr(1).split('&'));
+	
+	var do_redirect = false;
+	if (!('code' in query_strings)){
+		do_redirect = true;
+		redir_url = "https://www.moneybutton.com/oauth/v1/authorize?response_type=code&client_id=09a338342ad0ebe43f106f63d6383bb1&redirect_uri=https://www.tennesseeohioparanormalsociety.com/membership/&scope=" + oauth_scope + "&state=somesecurerandomstring";
+		window.location.href = redir_url;
+	}
+	
+	function call_read_assets(){
+		jQuery.ajax({
+			url: "https://www.moneybutton.com/api/v2/me/assets",
+			type: 'get',
+			headers: {'Authorization': 'Bearer ' + access_token_data['access_token']},
+			success: function( data ) {console.log(data)}
+		});
+	}
+	
+	function test_membership(balances){
+		has_membership=false;
+		for(balance_index in balances){
+			if (("asset_id" in balances[balance_index]) && balances[balance_index]["asset_id"] =="6752" ){
+				members_content = document.getElementById("members_content");
+				members_content.style = "";
+				console.log("has asset_id_and_matches");
+			}
+			
+		}
+	}
+	
+	function call_get_balances(){
+		jQuery.ajax({
+			url: "https://www.moneybutton.com/api/v2/me/wallets/active/balances",
+			type: 'get',
+			headers: {'Authorization': 'Bearer ' + access_token_data['access_token']},
+			success: test_membership
+		});
+	}
+	
+	function call_set_access_token(){
+		jQuery.ajax({
+			url: "https://www.tennesseeohioparanormalsociety.com/set-access-token/?access_token=" + access_token_data['access_token'],
+			type: 'get',
+		});
+	}
+
+	function access_token_success(data) {
+		access_token_data = data;
+		call_set_access_token();
+		call_user_identity();
+		// call_read_assets();
+		call_get_balances();
+	}
+	
+	// Here we will have "code" so we POST for access/refresh tokens
+	jQuery.ajax({
+		url: "https://www.moneybutton.com/oauth/v1/token",
+		type: 'post',
+		headers: {'content-type': 'application/x-www-form-urlencoded'},
+		data: {'grant_type': 'authorization_code',
+			   'client_id': '09a338342ad0ebe43f106f63d6383bb1',
+			   'code': query_strings['code'],
+			   'redirect_uri': "https://www.tennesseeohioparanormalsociety.com/membership/"},
+		success: access_token_success 
+	});
+	
+</script>
