@@ -32,7 +32,7 @@ The first section of this readme will show you how to use [tokens without needin
 
 `<script src="https://www.moneybutton.com/moneybutton.js"></script>`
 
-##Set up your Moneybutton App
+## Set up your Moneybutton App
 
 1. Login to your [Moneybutton](https://www.moneybutton.com/) account. 
 
