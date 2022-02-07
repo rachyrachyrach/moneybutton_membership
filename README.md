@@ -6,7 +6,7 @@ Using Moneybutton's API for OAuth! I created this as a "membership" nft. Holders
 
 The first section of this readme will show you how to use [tokens without needing a database](https://docs.moneybutton.com/docs/mb-html.html). This means the user's information is not saved. So they will have to use a new token each time they pay. 
 
-[Want to try it out?](https://www.tennesseeohioparanormalsociety.com/membership/) Contact me for tokens on my [MollyMatch Discord](https://discord.gg/cFZPH8A3hW).
+[Want to try it out?](https://www.tennesseeohioparanormalsociety.com/membership/) Contact me,[*rachyrachyrach#8593*](https://discordapp.com/users/rachyrachyrach#8593) for tokens on my [MollyMatch Discord](https://discord.gg/cFZPH8A3hW).
 
 ![TOPS token](/docs/images/tops_token.jpg)
 
