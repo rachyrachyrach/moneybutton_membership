@@ -2,7 +2,7 @@ Moneybutton Membership simple and advance paywall.
 =================
 Using Moneybutton's API for OAuth! I created this as a "membership" nft. Holders of the nft are able to access all special content. Holders without the NFT can pay with money. Or use a token that they own. In the "advanced" code section, this will allow the user to make only 1 purchase.  When they revist the site later, they can still view the content without repaying.
 
- You will be using JavaScript, html and if you want to try the advance part, you'll need a database.  I use DynoDB from AWS. We are using JavaScript to talk to Moneybutton's API and AWS for checking and writing to the database. 
+ You will be using JavaScript, html and if you want to try the advance part, you'll need a database.  I use DynamoDB from AWS. We are using JavaScript to talk to Moneybutton's API and AWS for checking and writing to the database. 
 
 The first section of this readme will show you how to use [tokens without needing a database](https://docs.moneybutton.com/docs/mb-html.html). This means the user's information is not saved. So they will have to use a new token each time they pay. 
 
@@ -19,6 +19,7 @@ The first section of this readme will show you how to use [tokens without needin
     - [Moneybutton Account](https://www.moneybutton.com/)
 
     - A database (I used AWS DynamoDB)
+        ![DynamoDB](/docs/images/DynamoDB.jpg)
 
     - Python scripts (I used AWS Lambda)
         ![Lambda](/docs/images/lambda.jpg)
