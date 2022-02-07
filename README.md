@@ -12,7 +12,7 @@ The first section of this readme will show you how to use [tokens without needin
 
 [credit Nate](https://twitter.com/ACP_Nate)
 
-- **What You Need**
+## What You Need
 
     - [Moneybutton Docs](https://docs.moneybutton.com/)
 
