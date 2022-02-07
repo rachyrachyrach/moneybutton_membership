@@ -14,21 +14,21 @@ The first section of this readme will show you how to use [tokens without needin
 
 ## What You Need
 
-    - [Moneybutton Docs](https://docs.moneybutton.com/)
+- [Moneybutton Docs](https://docs.moneybutton.com/)
 
-    - [Moneybutton Account](https://www.moneybutton.com/)
+- [Moneybutton Account](https://www.moneybutton.com/)
 
-    - A database (I used AWS DynamoDB)
+- A database (I used AWS DynamoDB)
         ![DynamoDB](/docs/images/DynamoDB.jpg)
 
-    - Python scripts (I used AWS Lambda)
+- Python scripts (I used AWS Lambda)
         ![Lambda](/docs/images/lambda.jpg)
 
-    - Your website
+- Your website
 
-    - [Tokens aka assets aka NFTS](https://bitcointoken.exchange/asset/6521/)
+- [Tokens aka assets aka NFTS](https://bitcointoken.exchange/asset/6521/)
 
-    - Moneybutton's Script in html. This was found in the [HTML documentation](https://docs.moneybutton.com/docs/mb-html.html).
+- Moneybutton's Script in html. This was found in the [HTML documentation](https://docs.moneybutton.com/docs/mb-html.html).
 
 `<script src="https://www.moneybutton.com/moneybutton.js"></script>`
 
